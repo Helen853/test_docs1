@@ -6,9 +6,9 @@ from openpyxl import load_workbook
 
 
 def test_docs_zip():
-    pdf_file = os.path.abspath('./test_docs1/resources/izveschenie.pdf')
-    csv_file = os.path.abspath('./test_docs1/resources/industry.csv')
-    xlsx_file = os.path.abspath('./test_docs1/resources/arenda.xlsx')
+    pdf_file = os.path.abspath('./resources/izveschenie.pdf')
+    csv_file = os.path.abspath('./resources/industry.csv')
+    xlsx_file = os.path.abspath('./resources/arenda.xlsx')
 
     print(pdf_file)
     print(csv_file)
@@ -23,7 +23,7 @@ def test_docs_zip():
 
 
 def test_read_pdf():
-    pdf_read = PdfReader('./test_docs1/resources/izveschenie.pdf')
+    pdf_read = PdfReader('./resources/izveschenie.pdf')
     amount_pages = len(pdf_read.pages)
     assert amount_pages == 5
     page = pdf_read.pages[1]
@@ -32,7 +32,7 @@ def test_read_pdf():
 
 
 def test_read_csv():
-    with open('./test_docs1/resources/industry.csv') as csvfile:
+    with open('./resources/industry.csv') as csvfile:
         tablitsa = csv.reader(csvfile)
         for line_no, line in enumerate(tablitsa, 1):
             if line_no == 2:
@@ -40,6 +40,6 @@ def test_read_csv():
 
 
 def test_read_xlsx():
-    workbook = load_workbook('./test_docs1/resources/arenda.xlsx')
+    workbook = load_workbook('./resources/arenda.xlsx')
     sheet = workbook.active
     assert 3 == sheet.cell(row=10, column=1).value
